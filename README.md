@@ -4,8 +4,7 @@ emoji: 🎨
 colorFrom: red
 colorTo: blue
 sdk: gradio
-sdk_version: "latest"
-app_file: cnn_style_transfer.py
-app_port: 7860
+sdk_version: "5.48.0"
+app_file: app.py
 pinned: false
 ---
