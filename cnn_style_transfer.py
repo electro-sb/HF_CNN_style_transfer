@@ -10,7 +10,7 @@ from pathlib import Path
 import gradio as gr
 from tqdm.auto import tqdm
 
-SIZE = (224,224)
+SIZE = (640, 480) #(H, W)
 
 # Device
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -177,7 +177,7 @@ def tensor_to_image(image_tensor):
 
 
 def style_transfer(style_image, content_image):
-    optimized = training_loop(style_image, content_image, num_steps=1)
+    optimized = training_loop(style_image, content_image, num_steps=2)
     return tensor_to_image(optimized)
 
     
@@ -186,6 +186,8 @@ if __name__ == "__main__":
  
     gr.close_all()
     with gr.Blocks(theme=gr.themes.Glass()) as interface:
+        with gr.Row():
+            gr.Markdown("<h2 style='color: blue;'>Vanilla CNN Style Transfer</h2>")
         with gr.Row():
             with gr.Column():
                 style_image=gr.Image(type="pil", label="Style Image",height=300,width=300)
